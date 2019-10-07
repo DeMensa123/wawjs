@@ -5,6 +5,7 @@ if (url.length > 4) {} // properties
 url.startsWith("http://") // methods
 "10".padStart(8, "0")
 
+
 // a dalsich cca 30  
 // a nejakych zo 15 deprecated 
 // (lebo suviseli z HTML a nie z jazykom)
