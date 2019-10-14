@@ -1,4 +1,4 @@
-/*global describe:true,it:true,	after:true,before:true,afterEach:true,beforeEach:true */
+/*global describe:true,it:true, after:true,before:true,afterEach:true,beforeEach:true */
 const assert = require("assert");
 
 describe("03-functions", function() {
