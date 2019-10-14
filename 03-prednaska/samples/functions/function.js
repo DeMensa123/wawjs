@@ -8,7 +8,6 @@ var f = function() { /*...*/ };
 arr[3] = function() { /*...*/ };
 app.push(function() {});
 
-
 //properties of other objects
 o.data = function() { /*...*/ };
 

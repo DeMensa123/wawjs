@@ -1,5 +1,6 @@
 function limiter(limit) {
   // limit caputed in closure
+  console.log(limit);
   return function(i) {
     return i < limit;
   }

@@ -6,12 +6,12 @@ var o = {};
 var o1 = {};
 
 //array entries, 
+let arr = [];
 arr[3] = {};
 arr.push({});
 
 //properties of other objects
 o1.data = {};
-
 
 // passed as arguments to functions
 calc({});

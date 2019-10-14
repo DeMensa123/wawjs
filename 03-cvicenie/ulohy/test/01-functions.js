@@ -5,42 +5,45 @@ describe("03-functions", function() {
   it("1. define function using FunctionDeclaration", function() {
     function f(...others){
       let r = "";
-      others.forEach(function(x){
-        r += x;
-      });
-            
+      r = others.reduce((r,x) => r += x);
       return r;
     }
     assert(typeof f === "function");
     assert(f("a", "b") === "ab");
     assert(f("a", "b", "c") === "abc");
   });
+
   it("2. define function using FunctionExpression", function() {
     
-    let f = function(a,b,c = ""){
-      return a+b+c;
+    let f = function(...others) {
+        return others.reduce((r,x) => r += x);
     }
     assert(typeof f === "function");
     assert(f("a", "b") === "ab");
     assert(f("a", "b", "c") === "abc");
   });
+
   it("3. define function using ArrowFunctionExpression", function() {
-    let f = (a,b,c = "") => {  return a+b+c; }
+    let f = (...others) => others.reduce((r,x) => r += x);
 
     assert(typeof f === "function");
     assert(f("a", "b") === "ab");
     assert(f("a", "b", "c") === "abc");
   });
+
   it("4. define method using function expression", function() {
-    var o = {
+    
+    let o = {
       c: "c",
-      m : function(a,b = ""){
-        return a+b+this.c;
+      m: function(...others){
+        let r = others.reduce((r,x) => r += x);
+        return r + "c";
       }
-    };
+    }
     assert(typeof o.m === "function");
     assert(o.m("a", "b") === "abc")
   });
+
   it("5. call method of one oject with another object", function() {
     let cat = {
       sound: "meau"
@@ -54,8 +57,7 @@ describe("03-functions", function() {
       }
     }
     assert(
-      
-      soundMachine.play.call(dog,cat) === "haf"
+      soundMachine.play.call(dog) === "haf"
     );
     assert(
       // TODO: fix the method call
@@ -207,15 +209,13 @@ describe("03-functions", function() {
     //assert(printValue.bind(o)===1);
     //assert(printValue.bind(o)()===1);
   });
+  
   it("15. prefix a sufix", function() {
 
-    
     function Formatter(prefix, sufix) {
       this.prefix = prefix;
       this.sufix = sufix;
-      this.format = function format(x){
-        //this.prefix = prefix;
-        //this.sufix = sufix;
+      this.format = function (x){
         return this.prefix + x + this.sufix;
       }
     }
@@ -228,11 +228,11 @@ describe("03-functions", function() {
     f2.sufix = "zzz";
     assert(f2.format("TEXT") === "xxxTEXTzzz");
   });
+
   it("16. prefix a sufix (using closure)", function() {
 
     function formater( prefix, sufix ) {
-      
-      return function(x ) {
+      return function(x) {
         return prefix + x + sufix
       }
     }
@@ -243,12 +243,11 @@ describe("03-functions", function() {
     assert(format2("text") === "xxxtextyyy");
 
   });
+
   it("17. prefix a sufix (using closure)", function() {
 
     function formater(prefix, sufix) {
-      const f = function(base){
-        return f.prefix + base + f.sufix;
-      }
+      let f = (x) => f.prefix + x + f.sufix;
       f.prefix = prefix;
       f.sufix = sufix;
       return f;
