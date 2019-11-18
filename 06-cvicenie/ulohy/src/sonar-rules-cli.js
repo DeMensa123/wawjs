@@ -43,9 +43,9 @@ const results = [];
 
 function getTotal(cb){
   try{
-    request( `${URL}&pageIndex=${pageIndex}&pageSize=${pageSize}`, ( err, _, result )=> {
-      return cb(err, result.total)
-    })
+    request( `${URL}&pageIndex=${pageIndex}&pageSize=${pageSize}`, ( err, _, result )=> 
+       cb(err, result.total)
+    )
   }
   catch(err) {
     console.log(err)
@@ -56,7 +56,7 @@ function getTotal(cb){
 function getJobs(total, cb){
 
   try{
-    const jobs =  Array.from({length:Math.ceil(total / pageSize)},(v,k)=>k+1).map( pi => (callback) => {
+    const jobs =  Array.from({length:total / pageSize},(v,k)=>k+1).map( pi => (callback) => {
       request(`${URL}&pageIndex=${pi}&pageSize=${pageSize}`, (err, _, data) => {
         callback(null, data.rules)
       })

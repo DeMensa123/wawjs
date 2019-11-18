@@ -1,8 +1,6 @@
 'use strict';
 var assert = require("assert");
 
-
-
 var o = {
     firstName: "John"
 };
