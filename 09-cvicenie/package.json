@@ -1,0 +1,15 @@
+{
+  "name": "09-cvicenie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --color test && SELF_TEST=1 node -r ./src/max.js -p '`done`'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "traverse": "^0.6.6"
+  }
+}
