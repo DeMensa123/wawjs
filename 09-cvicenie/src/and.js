@@ -1,5 +1,5 @@
 
-const and = (...fns) => x => fns.every(fn => fn(x))
+const and = (...fns) => x => fns.every(fn)
  
 // TODO: reimplement using recursion
 // and quick exit, avoid useles loop of whole array

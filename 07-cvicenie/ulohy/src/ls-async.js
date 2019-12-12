@@ -18,6 +18,7 @@ async function lsRescursive(dirName) {
   return filesOnly(files).map(({name}) => name)
   /*
   return ls(dirName)
+<<<<<<< HEAD
     .then(dirsOnly)
     .then(dirs => dirs.map(({ name }) => name))
     .then(dirs => dirs.map(name => path.resolve(dirName, name)))
@@ -29,6 +30,18 @@ async function lsRescursive(dirName) {
       files.map(({ name }) => name)
     )
     */
+=======
+    // .then(dirsOnly)
+    // .then(dirs => dirs.map(({ name }) => name))
+    // .then(dirs => dirs.map(name => path.resolve(dirName, name)))
+    // .then(dirs => dirs.map(ls)) // [] of Promises of []s
+    // .then(files => Promise.all(files)) // Promise of [] of []s
+    // .then(files => [].concat(...files)) // [[],[],...]-> [.,.,.]
+    // .then(filesOnly)
+    // .then((files) =>
+    //   files.map(({ name }) => name)
+    // )
+>>>>>>> a470c3efde5ae31cb529335cac2c29fbc4c87a89
 }
 
 function ls(dirName) {
